@@ -87,6 +87,8 @@ except Exception:
 
 # DB2 requires ibm_db_sa
 try:
+    import os
+    os.add_dll_directory(os.getenv('PATH_TO_CLI_DRIVER'))
     from third_party.ibis.ibis_db2.api import db2_connect
 except Exception:
     db2_connect = _raise_missing_client_error("pip install ibm_db_sa")
